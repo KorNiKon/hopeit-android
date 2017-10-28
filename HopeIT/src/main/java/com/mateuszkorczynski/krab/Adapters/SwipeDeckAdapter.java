@@ -50,13 +50,18 @@ public class SwipeDeckAdapter extends BaseAdapter {
             // normally use a viewholder
             v = inflater.inflate(R.layout.card_view, parent, false);
         }
-
+        Log.i("Layer type: ", "Jajka");
+        RestUsers item = (RestUsers)getItem(position);
+        Log.i("Layer type: ", "Jajka2");
         ImageView imageView = (ImageView) v.findViewById(R.id.offer_image);
         Picasso.with(context).load(R.drawable.food).fit().centerCrop().into(imageView);
-        TextView textField = (TextView) v.findViewById(R.id.sample_text);
-        RestUsers item = (RestUsers)getItem(position);
-        textField.setText(item.getId() + " " + item.getName());
-
+        Log.i("Layer type: ", "Jajka3");
+        TextView textField = (TextView) v.findViewById(R.id.general_info);
+        textField.setText(item.getName() + ", " + item.getAge());
+        Log.i("Layer type: ", "Jajka4");
+        TextView descField = (TextView) v.findViewById(R.id.description);
+        descField.setText(item.getDesc());
+        Log.i("Layer type: ", "Jajka5");
         v.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

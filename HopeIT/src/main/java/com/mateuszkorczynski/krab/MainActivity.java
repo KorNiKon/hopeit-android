@@ -31,15 +31,13 @@ public class MainActivity extends AppCompatActivity {
     private SwipeDeck cardStack;
     private Context context = this;
     private SwipeDeckAdapter adapter;
-    private ArrayList<String> testData;
-    private CheckBox dragCheckbox;
-    public ArrayList<RestUsers> kidsData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         cardStack = (SwipeDeck) findViewById(R.id.swipe_deck);
+        //new HttpRequestTask().execute();
 
         cardStack.setCallback(new SwipeDeck.SwipeDeckCallback() {
             @Override
@@ -53,8 +51,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        cardStack.setLeftImage(R.id.left_image);
-        cardStack.setRightImage(R.id.right_image);
+        //cardStack.setLeftImage(R.id.left_image);
+        //cardStack.setRightImage(R.id.right_image);
 
         Button btn = (Button) findViewById(R.id.button_left);
         btn.setOnClickListener(new View.OnClickListener() {
@@ -83,9 +81,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void setCardContent(ArrayList<RestUsers> list){
-        adapter = new SwipeDeckAdapter(list, this);
+        SwipeDeckAdapter deckAdapter = new SwipeDeckAdapter(list, this);
         if(cardStack != null){
-            cardStack.setAdapter(adapter);
+            cardStack.setAdapter(deckAdapter);
         }
     }
 
@@ -108,8 +106,8 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(ArrayList<RestUsers> greeting) {
-            kidsData = new ArrayList<RestUsers>(greeting);
-            setCardContent(kidsData);
+            ArrayList<RestUsers> list = new ArrayList<RestUsers>(greeting);
+            setCardContent(list);
         }
 
     }

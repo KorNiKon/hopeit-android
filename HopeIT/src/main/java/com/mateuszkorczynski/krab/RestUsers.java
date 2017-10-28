@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * Created by MAKORCZY on 2017-10-17.
  */
 
-@JsonIgnoreProperties(value = { "age" ,"desc" ,"cashTarget" ,"cashNow" ,"category" ,"deadline" ,"lastChance"})
+//@JsonIgnoreProperties(value = { "id","cashTarget" ,"cashNow" ,"category" ,"deadline" ,"lastChance"})
 public class RestUsers {
     private String id;
     private String name;
@@ -26,4 +26,31 @@ public class RestUsers {
         return this.name;
     }
 
+    public Integer getAge() {
+        return age;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public Double getCashTarget() {
+        return cashTarget;
+    }
+
+    public Double getCashNow() {
+        return cashNow;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public String getDeadline() {
+        return deadline;
+    }
+
+    public Boolean getLastChance() {
+        return lastChance;
+    }
 }

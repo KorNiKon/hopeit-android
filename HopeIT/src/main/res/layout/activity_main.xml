@@ -41,4 +41,19 @@
         android:layout_gravity="bottom|right"
         android:text="swipe right" />
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/noKids"
+            android:textSize="14pt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/no_kids_info"
+            android:layout_marginTop="239dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+
 </com.daprlabs.aaron.swipedeck.layouts.SwipeFrameLayout>
