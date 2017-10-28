@@ -1,7 +1,5 @@
 package io.kornikon.hopeit.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 //@JsonIgnoreProperties(value = { "age" ,"desc" ,"cashTarget" ,"cashNow" ,"category" ,"deadline" ,"lastChance"})
 public class Kid {
     private String id;

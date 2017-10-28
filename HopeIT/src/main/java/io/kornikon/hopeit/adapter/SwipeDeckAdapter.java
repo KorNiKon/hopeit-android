@@ -52,7 +52,7 @@ public class SwipeDeckAdapter extends BaseAdapter {
         }
 
         Log.i("Layer type: ", "Jajka");
-        Kid item = (Kid)getItem(position);
+        Kid item = (Kid) getItem(position);
         Log.i("Layer type: ", "Jajka2");
         ImageView imageView = (ImageView) v.findViewById(R.id.offer_image);
         Picasso.with(context).load(R.drawable.food).fit().centerCrop().into(imageView);
