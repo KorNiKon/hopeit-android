@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_marginTop="100px"
     android:padding="2px"
-    tools:context=".MainActivity$PlaceholderFragment">
+    tools:context="io.kornikon.hopeit.MainActivity$PlaceholderFragment">
 
     <TextView
         android:id="@+id/id_label"

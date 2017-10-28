@@ -1,4 +1,4 @@
-package io.kornikon.hopeit.Adapters;
+package io.kornikon.hopeit.adapter;
 
 import android.content.Context;
 import android.util.Log;
@@ -14,14 +14,14 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import io.kornikon.hopeit.R;
-import io.kornikon.hopeit.RestUsers;
+import io.kornikon.hopeit.model.Kid;
 
 public class SwipeDeckAdapter extends BaseAdapter {
 
-    private List<RestUsers> data;
+    private List<Kid> data;
     private Context context;
 
-    public SwipeDeckAdapter(List<RestUsers> data, Context context) {
+    public SwipeDeckAdapter(List<Kid> data, Context context) {
         this.data = data;
         this.context = context;
     }
@@ -51,12 +51,19 @@ public class SwipeDeckAdapter extends BaseAdapter {
             v = inflater.inflate(R.layout.card_view, parent, false);
         }
 
+        Log.i("Layer type: ", "Jajka");
+        Kid item = (Kid)getItem(position);
+        Log.i("Layer type: ", "Jajka2");
         ImageView imageView = (ImageView) v.findViewById(R.id.offer_image);
         Picasso.with(context).load(R.drawable.food).fit().centerCrop().into(imageView);
-        TextView textField = (TextView) v.findViewById(R.id.sample_text);
-        RestUsers item = (RestUsers) getItem(position);
-        textField.setText(item.getId() + " " + item.getName());
 
+        Log.i("Layer type: ", "Jajka3");
+        TextView textField = (TextView) v.findViewById(R.id.general_info);
+        textField.setText(item.getName() + ", " + item.getAge());
+        Log.i("Layer type: ", "Jajka4");
+        TextView descField = (TextView) v.findViewById(R.id.description);
+        descField.setText(item.getDesc());
+        Log.i("Layer type: ", "Jajka5");
         v.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

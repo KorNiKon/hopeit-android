@@ -1,21 +1,15 @@
-package com.mateuszkorczynski.krab;
+package io.kornikon.hopeit;
 
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.daprlabs.aaron.swipedeck.SwipeDeck;
-import com.mateuszkorczynski.krab.Adapters.SwipeDeckAdapter;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
@@ -23,7 +17,9 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
+
+import io.kornikon.hopeit.adapter.SwipeDeckAdapter;
+import io.kornikon.hopeit.model.Kid;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,15 +27,13 @@ public class MainActivity extends AppCompatActivity {
     private SwipeDeck cardStack;
     private Context context = this;
     private SwipeDeckAdapter adapter;
-    private ArrayList<String> testData;
-    private CheckBox dragCheckbox;
-    public ArrayList<RestUsers> kidsData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         cardStack = (SwipeDeck) findViewById(R.id.swipe_deck);
+        //new HttpRequestTask().execute();
 
         cardStack.setCallback(new SwipeDeck.SwipeDeckCallback() {
             @Override
@@ -53,8 +47,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        cardStack.setLeftImage(R.id.left_image);
-        cardStack.setRightImage(R.id.right_image);
+//        cardStack.setLeftImage(R.id.left_image);
+//        cardStack.setRightImage(R.id.right_image);
 
         Button btn = (Button) findViewById(R.id.button_left);
         btn.setOnClickListener(new View.OnClickListener() {
@@ -82,34 +76,36 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void setCardContent(ArrayList<RestUsers> list){
-        adapter = new SwipeDeckAdapter(list, this);
-        if(cardStack != null){
-            cardStack.setAdapter(adapter);
+    public void setCardContent(ArrayList<Kid> list) {
+        SwipeDeckAdapter deckAdapter = new SwipeDeckAdapter(list, this);
+        if (cardStack != null) {
+            cardStack.setAdapter(deckAdapter);
         }
     }
 
-    private class HttpRequestTask extends AsyncTask<Void, Void, ArrayList<RestUsers>> {
+    private class HttpRequestTask extends AsyncTask<Void, Void, ArrayList<Kid>> {
         @Override
-        protected ArrayList<RestUsers> doInBackground(Void... params) {
+        protected ArrayList<Kid> doInBackground(Void... params) {
             try {
                 final String url = "https://hopeit-server.herokuapp.com/kids";
                 RestTemplate restTemplate = new RestTemplate();
                 restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
-                ResponseEntity<RestUsers[]> responseEntity = restTemplate.getForEntity(url, RestUsers[].class);
-                RestUsers[] objects = responseEntity.getBody();
-                //RestUsers[] greeting = restTemplate.getForObject(url, RestUsers.class);
-                return new ArrayList<RestUsers>(Arrays.asList(objects));
+                ResponseEntity<Kid[]> responseEntity = restTemplate.getForEntity(url, Kid[].class);
+                Kid[] objects = responseEntity.getBody();
+                //Kid[] greeting = restTemplate.getForObject(url, Kid.class);
+                Log.i("MainActivity", "Returning " + Arrays.asList((objects)));
+                return new ArrayList<Kid>(Arrays.asList(objects));
             } catch (Exception e) {
                 Log.e("MainActivity", e.getMessage(), e);
             }
-            return new ArrayList<RestUsers>();
+
+            return new ArrayList<Kid>();
         }
 
         @Override
-        protected void onPostExecute(ArrayList<RestUsers> greeting) {
-            kidsData = new ArrayList<RestUsers>(greeting);
-            setCardContent(kidsData);
+        protected void onPostExecute(ArrayList<Kid> greeting) {
+            ArrayList<Kid> list = new ArrayList<Kid>(greeting);
+            setCardContent(list);
         }
 
     }
