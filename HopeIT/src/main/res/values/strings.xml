@@ -7,6 +7,7 @@
     <string name="content_value">[name]</string>
     <string name="action_refresh">Refresh</string>
     <string name="no_kids_info">No more kids!</string>
+    <string name="loading">Loading...</string>
     <string name="menu_history">My donations</string>
     <string name="menu_donate">Donate!</string>
     <string name="menu_messages">Messages</string>
