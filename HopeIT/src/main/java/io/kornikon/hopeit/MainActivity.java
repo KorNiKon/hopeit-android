@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                             case R.id.action_history:
                                 goToHistory();
                             case R.id.action_donate:
-
+                                return true;
                             case R.id.action_messages:
                                 goToMessages();
                         }

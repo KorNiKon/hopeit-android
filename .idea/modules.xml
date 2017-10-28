@@ -3,7 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/HopeIT/HopeIT.iml" filepath="$PROJECT_DIR$/HopeIT/HopeIT.iml" />
-      <module fileurl="file://C:\Users\KNIEMCZY\git\hopeit\hopeit-android\HopeIT Android.iml" filepath="C:\Users\KNIEMCZY\git\hopeit\hopeit-android\HopeIT Android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HopeIT Android.iml" filepath="$PROJECT_DIR$/HopeIT Android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../../../KNIEMCZY/git/hopeit/hopeit-android/HopeIT Android.iml" filepath="$PROJECT_DIR$/../../../../KNIEMCZY/git/hopeit/hopeit-android/HopeIT Android.iml" />
       <module fileurl="file://$PROJECT_DIR$/hopeit-android.iml" filepath="$PROJECT_DIR$/hopeit-android.iml" />
     </modules>
   </component>
