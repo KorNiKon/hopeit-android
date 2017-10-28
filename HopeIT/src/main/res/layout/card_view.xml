@@ -38,14 +38,15 @@
             <TextView
                 android:id="@+id/general_info"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:padding="10dp"/>
 
             <TextView
                 android:id="@+id/description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:layout_below="@id/general_info" />
+                android:padding="10dp" />
         </LinearLayout>
         <!--<ImageView-->
         <!--android:layout_weight="1"-->

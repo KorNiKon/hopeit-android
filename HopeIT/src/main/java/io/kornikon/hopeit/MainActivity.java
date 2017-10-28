@@ -3,8 +3,12 @@ package io.kornikon.hopeit;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.view.menu.MenuView;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
@@ -46,34 +50,28 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-//        cardStack.setLeftImage(R.id.left_image);
-//        cardStack.setRightImage(R.id.right_image);
+        BottomNavigationView bottomNavigationView = (BottomNavigationView)
+                findViewById(R.id.bottom_navigation);
 
-        Button btn = (Button) findViewById(R.id.button_left);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                cardStack.swipeTopCardLeft(500);
+        bottomNavigationView.setOnNavigationItemSelectedListener(
+                new BottomNavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.action_history:
+                                Log.e("x", "History");
+                                return true;
+                            case R.id.action_donate:
+                                Log.e("x", "Donate");
+                                return true;
+                            case R.id.action_messages:
+                                Log.e("x", "Messages");
+                                return true;
 
-            }
-        });
-        Button btn2 = (Button) findViewById(R.id.button_right);
-        btn2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                cardStack.swipeTopCardRight(180);
-            }
-        });
-
-        Button btn3 = (Button) findViewById(R.id.button_center);
-//        btn3.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                new HttpRequestTask().execute();
-//            }
-//        });
-
-
+                        }
+                        return true;
+                    }
+                });
     }
 
     @Override

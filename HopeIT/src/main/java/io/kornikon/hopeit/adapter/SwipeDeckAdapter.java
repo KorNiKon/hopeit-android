@@ -1,6 +1,8 @@
 package io.kornikon.hopeit.adapter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -50,20 +52,20 @@ public class SwipeDeckAdapter extends BaseAdapter {
             // normally use a viewholder
             v = inflater.inflate(R.layout.card_view, parent, false);
         }
-
-        Log.i("Layer type: ", "Jajka");
         Kid item = (Kid) getItem(position);
-        Log.i("Layer type: ", "Jajka2");
+        byte[] byteArray = item.getPhoto();
         ImageView imageView = (ImageView) v.findViewById(R.id.offer_image);
-        Picasso.with(context).load(R.drawable.food).fit().centerCrop().into(imageView);
-
-        Log.i("Layer type: ", "Jajka3");
+        if(byteArray != null){
+            Bitmap bmp = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
+            imageView.setImageBitmap(bmp);
+        }
+        else{
+            Picasso.with(context).load("@drawable/food.png").fit().centerCrop().into(imageView);
+        }
         TextView textField = (TextView) v.findViewById(R.id.general_info);
         textField.setText(item.getName() + ", " + item.getAge());
-        Log.i("Layer type: ", "Jajka4");
         TextView descField = (TextView) v.findViewById(R.id.description);
         descField.setText(item.getDesc());
-        Log.i("Layer type: ", "Jajka5");
         v.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

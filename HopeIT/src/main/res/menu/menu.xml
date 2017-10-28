@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_history"
+        android:checked="false"
+        android:icon="@drawable/nomoney"
+        android:title="@string/menu_history"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_donate"
+        android:checked="true"
+        android:icon="@drawable/money"
+        android:title="@string/menu_donate"
+        app:showAsAction="ifRoom"
+        />
+    <item
+        android:id="@+id/action_messages"
+        android:checked="false"
+        android:icon="@drawable/nomoney"
+        android:title="@string/menu_messages"
+        app:showAsAction="ifRoom" />
+</menu>
