@@ -66,13 +66,20 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Button btn3 = (Button) findViewById(R.id.button_center);
-        btn3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new HttpRequestTask().execute();
-            }
-        });
+//        btn3.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                new HttpRequestTask().execute();
+//            }
+//        });
 
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        new HttpRequestTask().execute();
     }
 
     public void setCardContent(ArrayList<Kid> list) {
@@ -80,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
         if (cardStack != null) {
             cardStack.setAdapter(deckAdapter);
         }
+        deckAdapter.notifyDataSetChanged();
     }
 
     private class HttpRequestTask extends AsyncTask<Void, Void, ArrayList<Kid>> {
