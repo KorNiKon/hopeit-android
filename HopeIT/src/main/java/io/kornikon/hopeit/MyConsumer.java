@@ -1,5 +1,9 @@
 package io.kornikon.hopeit;
 
-public class RestClient {
+import java.util.function.Consumer;
 
+@FunctionalInterface
+public interface MyConsumer<T> {
+
+    public void accept(T t);
 }
