@@ -1,10 +1,6 @@
-package com.mateuszkorczynski.krab;
+package io.kornikon.hopeit;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-/**
- * Created by MAKORCZY on 2017-10-17.
- */
 
 @JsonIgnoreProperties(value = { "age" ,"desc" ,"cashTarget" ,"cashNow" ,"category" ,"deadline" ,"lastChance"})
 public class RestUsers {

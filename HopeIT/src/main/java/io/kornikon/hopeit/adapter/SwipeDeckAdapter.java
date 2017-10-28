@@ -1,4 +1,4 @@
-package com.mateuszkorczynski.krab.Adapters;
+package io.kornikon.hopeit.Adapters;
 
 import android.content.Context;
 import android.util.Log;
@@ -9,12 +9,12 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.mateuszkorczynski.krab.MainActivity;
-import com.mateuszkorczynski.krab.R;
-import com.mateuszkorczynski.krab.RestUsers;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
+
+import io.kornikon.hopeit.R;
+import io.kornikon.hopeit.RestUsers;
 
 public class SwipeDeckAdapter extends BaseAdapter {
 
@@ -54,7 +54,7 @@ public class SwipeDeckAdapter extends BaseAdapter {
         ImageView imageView = (ImageView) v.findViewById(R.id.offer_image);
         Picasso.with(context).load(R.drawable.food).fit().centerCrop().into(imageView);
         TextView textField = (TextView) v.findViewById(R.id.sample_text);
-        RestUsers item = (RestUsers)getItem(position);
+        RestUsers item = (RestUsers) getItem(position);
         textField.setText(item.getId() + " " + item.getName());
 
         v.setOnClickListener(new View.OnClickListener() {
