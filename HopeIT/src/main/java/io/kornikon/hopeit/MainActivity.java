@@ -1,6 +1,7 @@
 package io.kornikon.hopeit;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -23,6 +24,8 @@ import java.util.Arrays;
 
 import io.kornikon.hopeit.adapter.SwipeDeckAdapter;
 import io.kornikon.hopeit.model.Kid;
+
+import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -52,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
         BottomNavigationView bottomNavigationView = (BottomNavigationView)
                 findViewById(R.id.bottom_navigation);
+        bottomNavigationView.getMenu().getItem(1).setChecked(true);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -59,19 +63,24 @@ public class MainActivity extends AppCompatActivity {
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                         switch (item.getItemId()) {
                             case R.id.action_history:
-                                Log.e("x", "History");
-                                return true;
+                                goToHistory();
                             case R.id.action_donate:
-                                Log.e("x", "Donate");
-                                return true;
-                            case R.id.action_messages:
-                                Log.e("x", "Messages");
-                                return true;
 
+                            case R.id.action_messages:
+                                goToMessages();
                         }
                         return true;
                     }
                 });
+    }
+
+    protected void goToMessages(){
+        Intent intent = new Intent(this, MessagesListActivity.class);
+        startActivity(intent);
+    }
+
+    protected void goToHistory(){
+        Log.e("x", "History");
     }
 
     @Override

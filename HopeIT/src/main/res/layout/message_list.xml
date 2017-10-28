@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:swipedeck="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView android:id="@+id/messages_header"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:text="@string/messages_header"
+        android:layout_width="fill_parent"
+        android:textSize="20sp"/>
+
+    <ListView
+        android:id="@android:id/list"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/messages_header">
+    </ListView>
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/bottom_navigation_msgs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        swipedeck:itemBackground="@color/colorPrimary"
+        swipedeck:itemIconTint="@drawable/menu_styles"
+        swipedeck:itemTextColor="@drawable/menu_styles"
+        swipedeck:menu="@menu/menu" />
+
+</RelativeLayout>
