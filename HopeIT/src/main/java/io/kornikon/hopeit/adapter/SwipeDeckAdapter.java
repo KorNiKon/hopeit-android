@@ -22,12 +22,10 @@ public class SwipeDeckAdapter extends BaseAdapter {
 
     private List<Kid> data;
     private Context context;
-    private int size;
 
     public SwipeDeckAdapter(List<Kid> data, Context context) {
         this.data = data;
         this.context = context;
-        this.size = data.size();
     }
 
     @Override
@@ -46,8 +44,8 @@ public class SwipeDeckAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        position = position % this.size;
+    public View getView(final int position, View convertView, ViewGroup parent) {
+
         View v = convertView;
         if (v == null) {
             LayoutInflater inflater = LayoutInflater.from(context);
